@@ -187,6 +187,11 @@ class AtInternetModule(private val reactContext: ReactApplicationContext) : Reac
     }
 
     @ReactMethod
+    fun events(eventsName: String?, dataObject: Map<String?, Any?>?) {
+        tracker.Events().add(eventsName, dataObject)
+    }
+
+    @ReactMethod
     fun touch(parameters: ReadableMap, promise: Promise) {
         try {
             val gesture = gesture(parameters)
