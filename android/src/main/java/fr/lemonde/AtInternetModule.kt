@@ -187,8 +187,9 @@ class AtInternetModule(private val reactContext: ReactApplicationContext) : Reac
     }
 
     @ReactMethod
-    fun events(eventsName: String?, dataObject: Map<String?, Any?>?) {
-        tracker.Events().add(eventsName, dataObject)
+    fun events(eventsName: String?, dataObject:ReadableMap) {
+        tracker.Events().add(eventsName, dataObject.toHashMap())
+        tracker.Events().send()
     }
 
     @ReactMethod
